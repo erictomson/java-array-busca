@@ -10,10 +10,7 @@ public class ArrayPesquisa {
         int[] numeros = new int[10];
 
         // Número a ser pesquisado
-        int numero;
-
-        // Controle se encontrou o número
-        boolean encontrou;
+        int elemento;
 
         // Posição do elemento encontrado no array
         int posicao;
@@ -29,28 +26,36 @@ public class ArrayPesquisa {
         // Solicitar o número a ser pesquisado
         System.out.println("Digite um número entre 0 e 9: ");
         // Leitura do número a ser pesquisado
-        numero=scanner.nextInt();
+        elemento=scanner.nextInt();
         // Limpeza do buffer
         scanner.nextLine();
 
-        // Inicializar os controles encontrou/não encontrou
-        encontrou=false;
+        // Efetuar a pesquisa, recebendo o resultado
+        posicao=buscarPosicaoElemento(numeros,elemento);
+
+        if(posicao>-1) {
+            System.out.println("Número " + elemento + " encontrado na " + (posicao+1) + "a. posição.");
+        } else {
+            System.out.println("Número não encontrado!");
+        }
+    }
+
+    public static int buscarPosicaoElemento(int[] numeros, int elemento) {
+        // Posição do elemento encontrado no array
+        int posicao;
+
+        // Inicializar o controle encontrou/não encontrou
         posicao=-1;
 
         // Pesquisar pelo número no array
         for(int i=0;i<numeros.length;i++) {
-            if(numero==numeros[i]) {
-                encontrou=true;
+            if(elemento==numeros[i]) {
+                // Elemento encontrado
                 posicao=i;
-                break;
             }
         }
 
         // Retornar o resultado da pesquisa
-        if(encontrou) {
-            System.out.println("Número " + numero + " encontrado na " + (posicao+1) + "a. posição.");
-        } else {
-            System.out.println("Número não encontrado!");
-        }
+        return posicao;
     }
 }
