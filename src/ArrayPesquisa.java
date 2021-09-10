@@ -42,12 +42,13 @@ public class ArrayPesquisa {
             if(numero==numeros[i]) {
                 encontrou=true;
                 posicao=i;
+                break;
             }
         }
 
         // Retornar o resultado da pesquisa
         if(encontrou) {
-            System.out.println("Número " + numero + " encontrado na posição " + posicao);
+            System.out.println("Número " + numero + " encontrado na " + (posicao+1) + "a. posição.");
         } else {
             System.out.println("Número não encontrado!");
         }
